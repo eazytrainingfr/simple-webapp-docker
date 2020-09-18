@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-webapp-docker-deployment
+  labels:
+    app: simple-webapp-docker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simple-webapp-docker
+  template:
+    metadata:
+      labels:
+        app: simple-webapp-docker
+    spec:
+      containers:
+        - name: simple-webapp-docker
+          image: dirane/simple-webapp-docker
+          ports:
+            - containerPort: 8080
